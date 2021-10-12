@@ -1,10 +1,13 @@
 import cors from "cors";
+import express from "express";
 import Server from "./classes/server";
 import router from "./routes/router";
 
-const server = new Server();
+const server = Server.Instance;
 
 // Middleware
+server.app.use(express.urlencoded({extended: true}))
+server.app.use(express.json())
 server.app.use(cors({
   origin: true, credentials: true
 }))
